@@ -1,0 +1,154 @@
+# elk_setting
+
+
+{
+        "mappings": {
+                "_default_": {
+                        "_all": {
+                                "norms": false
+                        },
+                        "_meta": {
+                                "version": "5.5.0"
+                        },
+                        "date_detection": false,
+                        "dynamic_templates": [
+                                {
+                                        "strings_as_keyword": {
+                                                "mapping": {
+                                                        "ignore_above": 1024,
+                                                        "type": "keyword"
+                                                },
+                                                "match_mapping_type": "string"
+                                        }
+                                }
+                        ],
+                        "properties": {
+                                "@timestamp": {
+                                        "type": "date"
+                                },
+                                "beat": {
+                                        "properties": {
+                                                "hostname": {
+                                                        "ignore_above": 1024,
+                                                        "type": "keyword"
+                                                },
+                                                "name": {
+                                                        "ignore_above": 1024,
+                                                        "type": "keyword"
+                                                },
+                                                "version": {
+                                                        "ignore_above": 1024,
+                                                        "type": "keyword"
+                                                }
+                                        }
+                                },
+                                "offset": {
+                                        "type": "long"
+                                },
+                                "read_timestamp":{
+                                        "ignore_above": 1024,
+                                        "type": "keyword"
+                                },
+                                "source": {
+                                        "ignore_above": 1024,
+                                        "type": "keyword"
+                                },
+                                "input_type":{
+                                        "ignore_above": 1024,
+                                        "type": "keyword"
+                                },
+                                "server": {
+                                        "ignore_above" :1024,
+                                        "type": "keyword"
+                                },
+                                "action": {
+                                        "ignore_above" :1024,
+                                        "type": "keyword"
+                                },
+                                "parameter": {
+                                        "properties": {
+                                                "app_uuid": {
+                                                        "ignore_above": 1024,
+                                                        "type": "keyword"
+                                                },
+                                                "app_name": {
+                                                        "ignore_above": 1024,
+                                                        "type": "keyword"
+                                                },
+                                                "app_version": {
+                                                        "ignore_above": 1024,
+                                                        "type": "keyword"
+                                                },
+                                                "app_ucode": {
+                                                        "ignore_above": 1024,
+                                                        "type": "keyword"
+                                                },
+                                                "client_idx": {
+                                                        "ignore_above": 1024,
+                                                        "type": "keyword"
+                                                },
+                                                "application": {
+                                                        "ignore_above": 1024,
+                                                        "type": "keyword"
+                                                },
+                                                "market_id": {
+                                                        "ignore_above": 1024,
+                                                        "type": "keyword"
+                                                },
+                                                "scope": {
+                                                        "ignore_above": 1024,
+                                                        "type": "keyword"
+                                                },
+                                                "vendor_id": {
+                                                        "ignore_above": 1024,
+                                                        "type": "keyword"
+                                                },
+                                                "client_id": {
+                                                        "ignore_above": 1024,
+                                                        "type": "keyword"
+                                                },
+                                                "edition": {
+                                                        "ignore_above": 1024,
+                                                        "type": "keyword"
+                                                },
+                                                "language": {
+                                                        "ignore_above": 1024,
+                                                        "type": "keyword"
+                                                }
+                                        }
+                                },
+                                "log_date": {
+                                        "ignore_above": 1024,
+                                        "type": "keyword"
+                                },
+                                "real_ip": {
+                                        "ignore_above": 1024,
+                                        "type": "keyword"
+                                },
+                                "tags": {
+                                        "ignore_above": 1024,
+                                        "type": "keyword"
+                                },
+                                "type": {
+                                        "ignore_above": 1024,
+                                        "type": "keyword"
+                                },
+                                "geoip": {
+                                        "type": "object",
+                                        "dynamic": true,
+                                        "properties" : {
+                                                "location": {
+                                                        "type": "geo_point"
+                                                }
+                                        }
+                                }
+                        }
+                }
+        },
+        "order": 0,
+        "settings": {
+                "index.mapping.total_fields.limit": 10000,
+                "index.refresh_interval": "10s"
+        },
+        "template": "filebeat-*"
+}
